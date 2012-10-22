@@ -14,16 +14,13 @@ class PopIdolScalatraServlet extends ScalatraServlet {
   
   /* 
    * actions
-   */
-  get("/voteGarath") {
-    gvotes+=1
-    log("Voted for Garath")    
-    redirect("/")
-  }
-  
-  get("/voteWill") {
-    wvotes+=1
-    log("Voted for Will")
+   */  
+  get("/vote/:name") {
+    params("name") match {
+      case "will" => wvotes+=1
+      case "garath" => gvotes+=1
+    }
+    log("Voted for " + params("name"))
     redirect("/")
   }
 
@@ -39,7 +36,7 @@ class PopIdolScalatraServlet extends ScalatraServlet {
 
 	  	<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 	<g id="Layer_1_2_" transform="scale(1.6)">
-            <a xlink:href="/voteGarath">
+            <a xlink:href="/vote/garath">
                 <g transform={ "scale(" + gvotes/total + ")" }>
 			<defs>
 				<path id="XMLID_2_" d="M312.304,359.029l-87.311-71.651l-105.388,39.76l37.548-114.943l-64.389-96.462l110.512,0.616
@@ -63,7 +60,7 @@ class PopIdolScalatraServlet extends ScalatraServlet {
 			</g>
                 </g>
             </a>
-            <a xlink:href="/voteWill">
+            <a xlink:href="/vote/will">
                 <g transform={ "scale(" + wvotes/total + ")" }>
 			<path d="M623.438,440.373l-114.242,25.283l-44.711,108.125l-58.453-100.469l-116.446-8.168l78.114-87.377l-27.252-113.173
 				l106.729,46.468l99.604-61.776l-12.152,116.095L623.438,440.373z"/>
