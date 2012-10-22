@@ -21,17 +21,21 @@ class PopIdolScalatraServlet extends ScalatraServlet {
       case "garath" => gvotes+=1
     }
     log("Voted for " + params("name"))
-    redirect("/")
+    html
   }
-
+  
   get("/") {
+    html
+  }
+  
+  def html =
     <html>
 	  <head>
 	  	<title>PopIdol</title>
-	  	<link href="css/popidol.css" rel="stylesheet" type="text/css" />
+	  	<link href="/css/popidol.css" rel="stylesheet" type="text/css" />
 	  </head>
       <body>
-        <img src="img/popidol.gif" />
+        <img src="/img/popidol.gif" />
 	  	<h1>Click on your favourite Pop Idol to vote for them</h1>
 
 	  	<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -54,7 +58,7 @@ class PopIdolScalatraServlet extends ScalatraServlet {
 						<use xlink:href="#XMLID_6_" />
 					</clipPath>
 					<g transform="matrix(1 1.513335e-09 2.298206e-09 1 -3.814697e-06 -6.911989e-08)" clip-path="url(#XMLID_8_)">
-						<image xlink:href="img/gareth.jpg" 	height="400" id="XMLID_10_" transform="matrix(0.8279 0.0224 -0.0241 0.891 31.4253 0)" width="462" />
+						<image xlink:href="/img/gareth.jpg" 	height="400" id="XMLID_10_" transform="matrix(0.8279 0.0224 -0.0241 0.891 31.4253 0)" width="462" />
 					</g>
 				</g>
 			</g>
@@ -81,7 +85,7 @@ class PopIdolScalatraServlet extends ScalatraServlet {
 							<use xlink:href="#XMLID_11_" />
 						</clipPath>
 						<g transform="matrix(1 -2.799101e-09 -3.035266e-09 1 1.907349e-06 0)" clip-path="url(#XMLID_13_)">	
-							<image xlink:href="img/will.jpg" height="346" id="XMLID_14_" transform="matrix(0.9881 0.048 -0.0464 0.9556 16.0479 186.3857)" width="540" />
+							<image xlink:href="/img/will.jpg" height="346" id="XMLID_14_" transform="matrix(0.9881 0.048 -0.0464 0.9556 16.0479 186.3857)" width="540" />
 						</g>
 					</g>
 				</g>
@@ -92,6 +96,5 @@ class PopIdolScalatraServlet extends ScalatraServlet {
 	  	</svg>
       </body>
     </html>
-  }
 
 }
